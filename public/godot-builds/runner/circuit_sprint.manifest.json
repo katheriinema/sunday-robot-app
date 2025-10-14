@@ -1,0 +1,9 @@
+{
+  "name": "Circuit Sprint",
+  "short_name": "Circuit Sprint",
+  "description": "Sunday's Runner Game",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

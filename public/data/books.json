@@ -1,0 +1,62 @@
+[
+  {
+    "id": "sunday-first-day",
+    "title": "Sunday's First Day",
+    "cover": "/assets/books/sunday-first-day/cover.png",
+    "pages": [
+      { "img": "/assets/books/sunday-first-day/01.png", "text": "Hi! I'm Sunday. I'm your robot friend." },
+      { "img": "/assets/books/sunday-first-day/02.png", "text": "Today is my first day at home." },
+      { "img": "/assets/books/sunday-first-day/03.png", "text": "This is our comfy sofa. Plop!" },
+      { "img": "/assets/books/sunday-first-day/04.png", "text": "Here's a bright window. The sun says hello." },
+      { "img": "/assets/books/sunday-first-day/05.png", "text": "I see our bookshelf. So many stories!" },
+      { "img": "/assets/books/sunday-first-day/06.png", "text": "And a chess table. Want to play later?" },
+      { "img": "/assets/books/sunday-first-day/07.png", "text": "Tap my head to hear me beep! Beep-boop!" },
+      { "img": "/assets/books/sunday-first-day/08.png", "text": "I can dance. Wiggle, wiggle!" },
+      { "img": "/assets/books/sunday-first-day/09.png", "text": "I can listen when you read." },
+      { "img": "/assets/books/sunday-first-day/10.png", "text": "I can cheer when you try your best." },
+      { "img": "/assets/books/sunday-first-day/11.png", "text": "I can learn with you every day." },
+      { "img": "/assets/books/sunday-first-day/12.png", "text": "I'm happy you're here. Let's be friends." }
+    ],
+    "lang": "en-US"
+  },
+  {
+    "id": "hydrate-hero",
+    "title": "Hydrate Hero: Sunday Saves the Day",
+    "cover": "/assets/books/hydrate-hero/cover.png",
+    "pages": [
+      { "img": "/assets/books/hydrate-hero/01.png", "text": "Beep! It's water time." },
+      { "img": "/assets/books/hydrate-hero/02.png", "text": "My tank needs water, and so do you!" },
+      { "img": "/assets/books/hydrate-hero/03.png", "text": "Sip, sip. Ahh, that's fresh." },
+      { "img": "/assets/books/hydrate-hero/04.png", "text": "Water helps brains think fast." },
+      { "img": "/assets/books/hydrate-hero/05.png", "text": "Water helps bodies run and jump." },
+      { "img": "/assets/books/hydrate-hero/06.png", "text": "Let's fill a bottle together." },
+      { "img": "/assets/books/hydrate-hero/07.png", "text": "Great! We reached halfway." },
+      { "img": "/assets/books/hydrate-hero/08.png", "text": "Almost there—keep going!" },
+      { "img": "/assets/books/hydrate-hero/09.png", "text": "Full! You're a Hydrate Hero!" },
+      { "img": "/assets/books/hydrate-hero/10.png", "text": "High-five, splash style!" },
+      { "img": "/assets/books/hydrate-hero/11.png", "text": "Let's set a gentle reminder." },
+      { "img": "/assets/books/hydrate-hero/12.png", "text": "Sip again later. Your body thanks you." }
+    ],
+    "lang": "en-US"
+  },
+  {
+    "id": "sunday-chess",
+    "title": "Sunday's Tiny Chess Adventure",
+    "cover": "/assets/books/sunday-chess/cover.png",
+    "pages": [
+      { "img": "/assets/books/sunday-chess/01.png", "text": "Tap, tap. The chessboard is ready." },
+      { "img": "/assets/books/sunday-chess/02.png", "text": "Pawns are tiny travelers. Step, step." },
+      { "img": "/assets/books/sunday-chess/03.png", "text": "The rook zooms in straight lines." },
+      { "img": "/assets/books/sunday-chess/04.png", "text": "The bishop slides on the colors." },
+      { "img": "/assets/books/sunday-chess/05.png", "text": "The knight hops like an L. Boing!" },
+      { "img": "/assets/books/sunday-chess/06.png", "text": "The queen is super strong. Wow!" },
+      { "img": "/assets/books/sunday-chess/07.png", "text": "The king is careful. Keep him safe." },
+      { "img": "/assets/books/sunday-chess/08.png", "text": "We say \"Good move!\" to be kind." },
+      { "img": "/assets/books/sunday-chess/09.png", "text": "Try your best. Think, then tap." },
+      { "img": "/assets/books/sunday-chess/10.png", "text": "If it's tricky, breathe in… out." },
+      { "img": "/assets/books/sunday-chess/11.png", "text": "Win or learn—both are great." },
+      { "img": "/assets/books/sunday-chess/12.png", "text": "Your turn, friend. Let's play!" }
+    ],
+    "lang": "en-US"
+  }
+]

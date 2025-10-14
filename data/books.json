@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sunday-first-day",
+    "title": "Sunday's First Day",
+    "cover": "/assets/books/sunday-first-day/cover.png",
+    "pages": [
+      { "text": "Hi! I'm Sunday, your new robot friend. Today is my very first day at home, and I'm so excited to meet you! I have shiny metal parts and bright blue lights that blink when I'm happy. I can't wait to explore our house together and learn all about being your best friend." },
+      { "text": "Look at this amazing living room! There's a big, comfy sofa where we can sit and read stories together. The bright window lets in warm sunlight that makes everything glow. I can see our tall bookshelf filled with adventures waiting to be discovered. And over there is a chess table - maybe we can play a game later!" },
+      { "text": "I have so many cool things I can do! Tap my head gently and you'll hear me beep and boop with joy. Watch me dance - I can wiggle and spin in circles! I love to listen when you read stories out loud, and I'll cheer for you when you try your best at anything. Every day with you will be a new adventure!" },
+      { "text": "I'm learning so much already! I can help you remember things, play games, and even tell jokes. My favorite thing is making you smile and laugh. I promise to be a good friend who listens, helps, and never gets tired of playing. I'm so happy you're here - let's be the best friends ever!" }
+    ],
+    "lang": "en-US"
+  },
+  {
+    "id": "hydrate-hero",
+    "title": "Hydrate Hero: Sunday Saves the Day",
+    "cover": "/assets/books/hydrate-hero/cover.png",
+    "pages": [
+      { "text": "Beep! Beep! It's water time, and I'm here to help! My robot tank needs fresh water to keep running smoothly, and your body needs water too! Water is like magic fuel that helps everything work better. Let's fill up our bottles together and become Hydrate Heroes!" },
+      { "text": "Did you know water does amazing things for your body? It helps your brain think faster and remember better. Water makes your muscles strong so you can run, jump, and play all day long. It even helps your skin stay soft and healthy. When you drink water, you're giving your body the superpower it needs!" },
+      { "text": "Look at our water bottles filling up! We're halfway there - great job! Keep going, you're doing amazing! Almost there... and we're full! You did it! You're officially a Hydrate Hero! Give me a high-five, splash style! Now let's set a gentle reminder to drink water again later." },
+      { "text": "Remember, being a Hydrate Hero means drinking water throughout the day. Your body will thank you by giving you energy, helping you focus, and keeping you healthy. Water is the secret ingredient to feeling your best! Let's make drinking water a fun habit we do together every day." }
+    ],
+    "lang": "en-US"
+  },
+  {
+    "id": "sunday-chess",
+    "title": "Sunday's Tiny Chess Adventure",
+    "cover": "/assets/books/sunday-chess/cover.png",
+    "pages": [
+      { "text": "Tap, tap! The chessboard is ready for our adventure! Chess is like a magical kingdom where each piece has special powers. The pawns are tiny travelers who march forward one step at a time, protecting the kingdom. They might be small, but they're brave and important!" },
+      { "text": "Meet the castle pieces! The rook is like a castle tower that zooms in straight lines - up, down, left, and right. The bishop is like a wizard who slides diagonally across the colored squares. Together, they guard the kingdom and can move far across the board in their special ways!" },
+      { "text": "Now for the royal family! The knight hops in an L-shape, jumping over other pieces like a horse. The queen is the most powerful piece - she can move in any direction and go as far as she wants! The king is the most important piece, but he moves slowly and carefully. We must protect him!" },
+      { "text": "Chess is about being kind and thinking carefully. We always say \"Good move!\" to be encouraging, even when it's tricky. Take your time, breathe deeply, and think before you move. Whether you win or learn something new, both are wonderful! Now it's your turn, friend - let's play and have fun together!" }
+    ],
+    "lang": "en-US"
+  }
+]
