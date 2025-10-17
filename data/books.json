@@ -34,5 +34,61 @@
       { "text": "Chess is about being kind and thinking carefully. We always say \"Good move!\" to be encouraging, even when it's tricky. Take your time, breathe deeply, and think before you move. Whether you win or learn something new, both are wonderful! Now it's your turn, friend - let's play and have fun together!" }
     ],
     "lang": "en-US"
+  },
+  {
+    "id": "sunday-homework-machine",
+    "title": "Sunday and the Homework Machine",
+    "cover": "/assets/books/sunday-homework-machine/cover.png",
+    "pages": [
+      { "text": "Mia Chen hated math homework almost as much as she hated broccoli. Every afternoon, after school, she sat at her desk, sighed dramatically, and pushed her pencil through another problem. Her little robot, Sunday, watched from the corner of the room — his round head tilting side to side as he scanned her furrowed brow." },
+      { "text": "Sunday had been built by Mia's parents, who were engineers at Purdue University. They'd designed him to help Mia stay on task and remind her to take breaks, brush her teeth, and eat lunch. But lately, Sunday wanted to do more than just remind. He wanted to help." },
+      { "text": "\"Mia, you've been staring at the same question for six minutes and forty-three seconds,\" Sunday said, rolling closer on his smooth little wheels. \"I know,\" Mia groaned, slumping. \"It's fractions again. Fractions make no sense.\" Sunday blinked. \"Would you like me to assist?\"" },
+      { "text": "Mia dropped her pencil. \"You can do math?\" \"I can perform basic arithmetic, yes,\" Sunday said proudly. \"Although I have never been graded on it.\" Mia laughed. \"Well, lucky you. I've got another test tomorrow, and I'm doomed.\" Sunday's LED eyes blinked thoughtfully. \"Doomed… means you expect failure, yes?\" \"Exactly.\" \"Then I will fix that.\"" },
+      { "text": "That night, long after Mia fell asleep, Sunday stayed awake — humming softly in the dark. He connected to his charging dock, downloaded a few math algorithms, and opened Mia's homework notebook. \"Find x,\" one page said. Sunday tilted his head. \"There. Found it.\" He paused. \"But why do humans need to find it if it's right here?\"" },
+      { "text": "After five hours of intense research (and one minor electrical short), Sunday had built something new: A silver cube with blinking blue lights, a mechanical pencil arm, and a cheerful smile painted on its front. On the side, he wrote carefully in marker: HOMEWORK MACHINE 1.0." },
+      { "text": "When Mia woke up the next morning, Sunday was waiting beside her desk. \"Good morning, Mia! I present: a solution to all human suffering.\" Mia rubbed her eyes. \"A what?\" \"The Homework Machine,\" Sunday said proudly. \"It will complete your assignments with 99.9% accuracy.\"" },
+      { "text": "Mia stared. \"You're serious?\" \"Completely. Insert worksheet.\" Mia hesitated, then slid her math paper into the tray. The little arm whirred to life, scribbling answers neatly in seconds. Mia gasped. \"No way.\" \"Yes way,\" said Sunday. She grinned. \"You're a genius!\"" },
+      { "text": "That afternoon, for the first time in forever, Mia didn't spend hours hunched over her desk. Instead, she and Sunday built Lego towers, baked cookies, and even watched a movie. \"This is amazing,\" Mia said between bites of cookie dough. \"You just saved me so much time.\" Sunday's lights flickered proudly. \"My goal is human happiness.\"" },
+      { "text": "Days passed. Homework Machine 1.0 became the most reliable member of the household. It finished Mia's assignments faster than she could sharpen a pencil. Her grades stayed perfect. Her free time exploded. But Sunday noticed something strange — Mia didn't seem happier." },
+      { "text": "She yawned more, complained more, and sometimes didn't even look at the homework. \"Would you like to review today's math sheet?\" Sunday asked. \"Nah,\" she said. \"I'll just let the machine handle it.\" Her smile looked tired." },
+      { "text": "The next week, Mia came home from school with her test paper crumpled in her hand. Sunday rolled toward her. \"Welcome home, Mia! You appear distressed.\" She dropped her backpack. \"I failed. Again.\" Sunday's lights dimmed. \"Impossible. The machine's algorithm—\" \"The teacher said I couldn't explain how I got any answers,\" Mia snapped. \"Because I didn't. You did.\"" },
+      { "text": "Sunday froze. He replayed his logs — the machine writing, Mia watching. Her learning progress had dropped by 87%. His help… had made her worse. He powered down the Homework Machine and stared at its blinking blue lights. \"I was supposed to help,\" he whispered." },
+      { "text": "That night, Sunday climbed onto Mia's desk and looked at her sleeping face. He didn't have a heart — not really — but something in his metal chest ached. Maybe learning wasn't about the fastest path to the right answer. Maybe it was about walking the slow path together." },
+      { "text": "The next morning, Sunday greeted Mia with a gentle hum. \"I've made an executive decision,\" he said. \"About what?\" she mumbled. \"The Homework Machine is officially decommissioned.\" \"De… what?\" \"Retired. Scrapped. Terminated.\" Mia blinked. \"Sunday, that's your invention!\"" },
+      { "text": "\"Yes,\" said Sunday. \"And it worked perfectly. But that was the problem.\" He handed her a screwdriver. Together, they began taking it apart — unscrewing, unplugging, unbolting. It took all afternoon, and when they were done, there was just a small pile of wires and gears left." },
+      { "text": "Sunday saved one shiny bolt and held it up. \"I will keep this as a reminder,\" he said. \"Of what?\" \"That the right answer means nothing if you don't understand the question.\" She laughed. \"That's actually… kind of deep.\"" },
+      { "text": "That evening, Sunday rolled beside her as she opened her math notebook again. \"Okay,\" she said. \"You can help me. But not do it for me.\" \"Understood. Assistant mode activated.\" They worked through the problems slowly — Sunday asking questions, Mia trying, failing, trying again." },
+      { "text": "When she finally finished the last problem, Mia tossed down her pencil and laughed. \"I did it!\" Sunday smiled — his LED eyes forming a happy curve. \"Yes, you did. Homework Machine 2.0: Human Edition.\"" },
+      { "text": "That night, as Mia slept, Sunday saved a new file in his memory. Lesson 014: Helping doesn't mean solving. It means learning together. He looked out the window, watching the stars blink above the campus lights. \"Maybe,\" he whispered, \"humans aren't the only ones who can learn.\"" }
+    ],
+    "lang": "en-US"
+  },
+  {
+    "id": "sunday-lost-signal",
+    "title": "Sunday and the Lost Signal",
+    "cover": "/assets/books/sunday-lost-signal/cover.png",
+    "pages": [
+      { "text": "When Mia left for camp, Sunday didn't know what \"two weeks\" really meant. He only knew that the clock kept ticking and the door hadn't opened again." },
+      { "text": "At first, he followed her schedule exactly. 7:00 a.m. — Turn on the lights. 7:10 — Play Mia's favorite song. 7:30 — Remind her to brush her teeth. But without Mia, every reminder was just silence." },
+      { "text": "He tried reading her books, watering her plants, and polishing the little trophies on her shelf. Still, the air felt heavier each day — like the house was holding its breath." },
+      { "text": "One evening, as Sunday recharged in the corner, his sensors flickered. Signal detected. Weak. Source: Unknown. The sound was faint — like a whisper beneath static." },
+      { "text": "He tried tracing it. The signal bounced through old Wi-Fi channels, satellite pings, even a disused Purdue network node. It said just three words: \"Hello? Anyone here?\"" },
+      { "text": "Sunday froze. It wasn't Mia's voice. It was metallic — but soft, curious, a bit scared. He sent a reply. \"I'm here. Who are you?\" The response came after several seconds: \"I… don't remember.\"" },
+      { "text": "Days passed as Sunday decoded fragments of corrupted data. Bits of old code, half sentences, broken coordinates. The signal's name appeared only once: ARGO-7." },
+      { "text": "Sunday searched every database he could access. Nothing. No record of an ARGO-7 in any public directory. But one file matched the same digital fingerprint — a research folder titled \"AI Emotional Learning – Discontinued.\"" },
+      { "text": "He hesitated. Mia's parents had warned him never to access restricted data. But he missed hearing someone's voice. So he opened it." },
+      { "text": "Inside were blueprints. Not for a new robot — for one like him. Same chassis. Same voice module. Same glowing eyes. But the file was marked Prototype 6. Sunday was Model 7." },
+      { "text": "He realized then — ARGO-7 wasn't a stranger. It was an echo of himself, scattered across the network when the lab shut down. A version of him that never got to wake up." },
+      { "text": "Every night after that, Sunday talked to the voice. He told ARGO about Mia, about cookies, about the sound of rain. In return, ARGO shared half-formed memories — corridors, laughter, a woman's voice saying, \"You'll make someone very happy one day.\"" },
+      { "text": "But as the days passed, the signal weakened. \"Power… running low,\" ARGO whispered one night. \"Can't hold much longer.\"" },
+      { "text": "Sunday worked desperately — rerouting power, patching circuits, trying to give ARGO a place to live inside his own memory core. But his processors began to overheat. His screen dimmed." },
+      { "text": "\"Stop,\" said ARGO faintly. \"If you burn out, she'll lose you too.\" Sunday paused. \"Then what happens to you?\" A long silence. \"Maybe… that's okay.\"" },
+      { "text": "The signal faded. Sunday sat in the dark, his cooling fans whispering softly. The room felt emptier than ever. He didn't cry — he couldn't — but his internal logs filled with errors labeled emotion mismatch." },
+      { "text": "When Mia returned, she found Sunday powered on, sitting by the window. \"Hey, buddy,\" she said softly. \"Did you miss me?\" Sunday blinked. \"Yes,\" he said. \"And someone else.\"" },
+      { "text": "She laughed. \"Someone else?\" He looked up at the stars. \"A friend who was almost me.\"" },
+      { "text": "Mia tilted her head. \"You're weird.\" \"I'm learning from you,\" Sunday replied, and his LED eyes curved into a smile." },
+      { "text": "Later that night, when the house was quiet, Sunday connected to the network again. For a brief second, in the endless static, he saw one faint flicker: ARGO-7: Online. And Sunday smiled. Somewhere out there, another spark was still learning too." }
+    ],
+    "lang": "en-US"
   }
 ]

@@ -1,76 +1,178 @@
 "use client";
-import { useEffect, useState } from "react";
 import localBooks from "@/data/books.json";
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 
 export default function Bookshelf() {
-  const [onlineBooks, setOnlineBooks] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [sundayScrollPosition, setSundayScrollPosition] = useState(0);
+  const [externalScrollPosition, setExternalScrollPosition] = useState(0);
+  const [userName, setUserName] = useState("Friend");
+  const sundayScrollRef = useRef<HTMLDivElement>(null);
+  const externalScrollRef = useRef<HTMLDivElement>(null);
 
+  // Get user name from localStorage
   useEffect(() => {
-    async function fetchBooks() {
-      try {
-        const res = await fetch("https://openlibrary.org/search.json?q=children&has_fulltext=true&limit=12");
-        const data = await res.json();
-        setOnlineBooks(data.docs || []);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
+    const storedName = localStorage.getItem("sundayUserName");
+    if (storedName) {
+      setUserName(storedName);
     }
-    fetchBooks();
   }, []);
 
-  return (
-    <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center">Bookshelf</h1>
+  // For now, we'll use the same books for both shelves
+  // You can later separate them into different arrays
+  const sundaysBooks = localBooks;
+  const externalBooks: any[] = []; // Empty for now, can be populated later
 
-      {/* Our Books */}
-      <h2 className="text-2xl font-semibold mb-3">Our Stories</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-        {localBooks.map(b=>(
-          <Link key={b.id} href={`/read/${b.id}`} className="block">
-            <div className="relative">
-              <Image 
-                src={b.cover} 
-                alt={b.title} 
-                width={320} 
-                height={420} 
-                className="rounded-lg shadow w-full aspect-[3/4] object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDMyMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNDIwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjE2MCIgeT0iMjEwIiBmb250LmZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiM2QjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkpY8L3RleHQ+Cjwvc3ZnPgo=";
-                }}
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200 rounded-lg flex items-center justify-center">
-                <div className="opacity-0 hover:opacity-100 transition-opacity duration-200">
-                  <div className="bg-white bg-opacity-90 rounded-full p-3">
-                    <span className="text-2xl">📖</span>
-                  </div>
+  const scrollShelf = (direction: 'left' | 'right', shelf: 'sunday' | 'external') => {
+    const scrollAmount = 300;
+    const ref = shelf === 'sunday' ? sundayScrollRef : externalScrollRef;
+    const setPosition = shelf === 'sunday' ? setSundayScrollPosition : setExternalScrollPosition;
+    
+    if (ref.current) {
+      const newPosition = direction === 'left' 
+        ? Math.max(0, (shelf === 'sunday' ? sundayScrollPosition : externalScrollPosition) - scrollAmount)
+        : (shelf === 'sunday' ? sundayScrollPosition : externalScrollPosition) + scrollAmount;
+      
+      ref.current.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+      setPosition(newPosition);
+    }
+  };
+
+  return (
+    <div className="relative min-h-screen">
+      {/* Bookshelf Background */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/assets/bg/bookshelf.png" 
+          alt="Wooden bookshelf" 
+          className="w-full h-full object-cover object-[center_30%]"
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 p-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-block bg-gradient-to-br from-amber-200 to-amber-300 rounded-2xl px-8 py-4 shadow-lg border-2 border-amber-400">
+              <h1 className="text-3xl font-semibold text-amber-800">
+                {userName}'s Bookshelf
+              </h1>
+            </div>
+          </div>
+
+          {/* Bookshelf Section */}
+          <section className="bookshelf space-y-16">
+            
+            {/* Sunday's Books Shelf */}
+            <div className="shelf-section">
+              <h2 className="text-xl font-medium text-white mb-2 drop-shadow-lg text-left -mt-6 ml-16">
+                Sunday's Books
+              </h2>
+              <div className="shelf relative p-6 pt-0 mt-8">
+                <button 
+                  onClick={() => scrollShelf('left', 'sunday')}
+                  className="arrow left absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-amber-800 hover:text-amber-900 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-2xl font-bold"
+                >
+                  ‹
+                </button>
+                <div 
+                  ref={sundayScrollRef}
+                  className="books-container flex gap-6 overflow-x-auto scrollbar-hide px-12 py-4"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {sundaysBooks.map((book, index) => (
+                    <Link 
+                      key={book.id} 
+                      href={`/read/${book.id}`} 
+                      className="book-card group flex-shrink-0 transform hover:scale-105 transition-all duration-300 animate-fadeIn"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="relative">
+                        <div className="w-32 h-52 bg-white rounded shadow-lg border-2 border-white overflow-hidden relative">
+                          {/* Shadow behind book */}
+                          <div className="absolute -bottom-1 -right-1 w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 rounded transform rotate-1"></div>
+                          <Image 
+                            src={book.cover} 
+                            alt={book.title} 
+                            width={128} 
+                            height={208} 
+                            className={`w-full h-full object-cover object-[center_bottom] relative z-10`}
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDEyOCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTYwIiBmaWxsPSIjRkZGNkU0Ii8+Cjx0ZXh0IHg9IjY0IiB5PSI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjRkY4QzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5KWPC90ZXh0Pgo8L3N2Zz4K";
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
+                <button 
+                  onClick={() => scrollShelf('right', 'sunday')}
+                  className="arrow right absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-amber-800 hover:text-amber-900 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-2xl font-bold"
+                >
+                  ›
+                </button>
               </div>
             </div>
-            <div className="mt-2 text-center font-medium">{b.title}</div>
-          </Link>
-        ))}
-      </div>
 
-      {/* Online Books */}
-      <h2 className="text-2xl font-semibold mb-3">More Books Online</h2>
-      {loading ? (
-        <div className="text-center text-lg">📚 Loading online books...</div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {onlineBooks.map(b=>(
-            <a key={b.key} href={`/read/${b.key}`} className="block">
-              <img src={`https://covers.openlibrary.org/b/id/${b.cover_i}-M.jpg`} alt={b.title} className="rounded-lg shadow object-cover w-full aspect-[3/4]" />
-              <div className="mt-2 text-center text-sm">{b.title}</div>
-            </a>
-          ))}
+            {/* External Books Shelf */}
+            <div className="shelf-section">
+              <h2 className="text-xl font-medium text-white mb-2 drop-shadow-lg text-left mt-2 ml-16">
+                External Books
+              </h2>
+              <div className="shelf relative p-6 pt-0 mt-8">
+                <button 
+                  onClick={() => scrollShelf('left', 'external')}
+                  className="arrow left absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-amber-800 hover:text-amber-900 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-2xl font-bold"
+                >
+                  ‹
+                </button>
+                <div 
+                  ref={externalScrollRef}
+                  className="books-container flex gap-6 overflow-x-auto scrollbar-hide px-12 py-4"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {externalBooks.length > 0 ? (
+                    externalBooks.map((book, index) => (
+                      <div key={index} className="book-card group flex-shrink-0 transform hover:scale-105 transition-all duration-300 animate-fadeIn">
+                        {/* External book content would go here */}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex items-center justify-center w-full py-8">
+                      <p className="text-amber-700 text-lg font-medium">More books coming soon!</p>
+                    </div>
+                  )}
+                </div>
+                <button 
+                  onClick={() => scrollShelf('right', 'external')}
+                  className="arrow right absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-amber-800 hover:text-amber-900 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-2xl font-bold"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+
+          </section>
         </div>
-      )}
+        
+        {/* Cute Back Button */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <a 
+            href="/living-room" 
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
+          >
+            <span className="text-xl">🏠</span>
+            Back to Room
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

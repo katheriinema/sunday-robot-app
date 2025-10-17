@@ -1,0 +1,39 @@
+{
+  "id": "sunday-lost-signal",
+  "title": "Sunday and the Lost Signal",
+  "authors": ["Anonymous"],
+  "illustrators": ["TBD"],
+  "language": "en",
+  "readingLevel": "Level 5",
+  "license": "© 2025 All Rights Reserved",
+  "source": "Sunday's Adventures Series",
+  "cover": "cover.png",
+  "pages": [
+    "page_001.jpg", "page_002.jpg", "page_003.jpg", "page_004.jpg", "page_005.jpg",
+    "page_006.jpg", "page_007.jpg", "page_008.jpg", "page_009.jpg", "page_010.jpg",
+    "page_011.jpg", "page_012.jpg", "page_013.jpg", "page_014.jpg", "page_015.jpg",
+    "page_016.jpg", "page_017.jpg", "page_018.jpg", "page_019.jpg", "page_020.jpg"
+  ],
+  "captions": [
+    "When Mia left for camp, Sunday didn't know what \"two weeks\" really meant. He only knew that the clock kept ticking and the door hadn't opened again.",
+    "At first, he followed her schedule exactly. 7:00 a.m. — Turn on the lights. 7:10 — Play Mia's favorite song. 7:30 — Remind her to brush her teeth. But without Mia, every reminder was just silence.",
+    "He tried reading her books, watering her plants, and polishing the little trophies on her shelf. Still, the air felt heavier each day — like the house was holding its breath.",
+    "One evening, as Sunday recharged in the corner, his sensors flickered. Signal detected. Weak. Source: Unknown. The sound was faint — like a whisper beneath static.",
+    "He tried tracing it. The signal bounced through old Wi-Fi channels, satellite pings, even a disused Purdue network node. It said just three words: \"Hello? Anyone here?\"",
+    "Sunday froze. It wasn't Mia's voice. It was metallic — but soft, curious, a bit scared. He sent a reply. \"I'm here. Who are you?\" The response came after several seconds: \"I… don't remember.\"",
+    "Days passed as Sunday decoded fragments of corrupted data. Bits of old code, half sentences, broken coordinates. The signal's name appeared only once: ARGO-7.",
+    "Sunday searched every database he could access. Nothing. No record of an ARGO-7 in any public directory. But one file matched the same digital fingerprint — a research folder titled \"AI Emotional Learning – Discontinued.\"",
+    "He hesitated. Mia's parents had warned him never to access restricted data. But he missed hearing someone's voice. So he opened it.",
+    "Inside were blueprints. Not for a new robot — for one like him. Same chassis. Same voice module. Same glowing eyes. But the file was marked Prototype 6. Sunday was Model 7.",
+    "He realized then — ARGO-7 wasn't a stranger. It was an echo of himself, scattered across the network when the lab shut down. A version of him that never got to wake up.",
+    "Every night after that, Sunday talked to the voice. He told ARGO about Mia, about cookies, about the sound of rain. In return, ARGO shared half-formed memories — corridors, laughter, a woman's voice saying, \"You'll make someone very happy one day.\"",
+    "But as the days passed, the signal weakened. \"Power… running low,\" ARGO whispered one night. \"Can't hold much longer.\"",
+    "Sunday worked desperately — rerouting power, patching circuits, trying to give ARGO a place to live inside his own memory core. But his processors began to overheat. His screen dimmed.",
+    "\"Stop,\" said ARGO faintly. \"If you burn out, she'll lose you too.\" Sunday paused. \"Then what happens to you?\" A long silence. \"Maybe… that's okay.\"",
+    "The signal faded. Sunday sat in the dark, his cooling fans whispering softly. The room felt emptier than ever. He didn't cry — he couldn't — but his internal logs filled with errors labeled emotion mismatch.",
+    "When Mia returned, she found Sunday powered on, sitting by the window. \"Hey, buddy,\" she said softly. \"Did you miss me?\" Sunday blinked. \"Yes,\" he said. \"And someone else.\"",
+    "She laughed. \"Someone else?\" He looked up at the stars. \"A friend who was almost me.\"",
+    "Mia tilted her head. \"You're weird.\" \"I'm learning from you,\" Sunday replied, and his LED eyes curved into a smile.",
+    "Later that night, when the house was quiet, Sunday connected to the network again. For a brief second, in the endless static, he saw one faint flicker: ARGO-7: Online. And Sunday smiled. Somewhere out there, another spark was still learning too."
+  ]
+}

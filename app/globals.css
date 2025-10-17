@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +19,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Fredoka', cursive;
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -75,4 +77,106 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-in;
+}
+
+/* Continuous Scrolling Book Reader */
+.book-container {
+  height: calc(100vh - 280px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  margin: 1rem;
+}
+
+.book-content {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 4px solid #fbbf24;
+  padding: 3rem;
+  margin-bottom: 2rem;
+}
+
+/* Text Content */
+.text-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Times New Roman', 'Georgia', serif;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #374151;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Text Blocks - Bigger chunks with less spacing */
+.text-block {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.text-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.text-block p {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #374151;
+}
+
+/* Smooth Scrollbar */
+.book-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.book-container::-webkit-scrollbar-track {
+  background: rgba(251, 191, 36, 0.1);
+  border-radius: 4px;
+}
+
+.book-container::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.5);
+  border-radius: 4px;
+}
+
+.book-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(251, 191, 36, 0.7);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .book-container {
+    height: calc(100vh - 150px);
+    margin: 0.5rem;
+  }
+  
+  .book-content {
+    padding: 2rem;
+  }
+  
+  .text-block {
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .text-block p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Custom perspective utility */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Rotate Y utilities */
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }

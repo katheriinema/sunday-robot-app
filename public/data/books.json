@@ -4,18 +4,10 @@
     "title": "Sunday's First Day",
     "cover": "/assets/books/sunday-first-day/cover.png",
     "pages": [
-      { "img": "/assets/books/sunday-first-day/01.png", "text": "Hi! I'm Sunday. I'm your robot friend." },
-      { "img": "/assets/books/sunday-first-day/02.png", "text": "Today is my first day at home." },
-      { "img": "/assets/books/sunday-first-day/03.png", "text": "This is our comfy sofa. Plop!" },
-      { "img": "/assets/books/sunday-first-day/04.png", "text": "Here's a bright window. The sun says hello." },
-      { "img": "/assets/books/sunday-first-day/05.png", "text": "I see our bookshelf. So many stories!" },
-      { "img": "/assets/books/sunday-first-day/06.png", "text": "And a chess table. Want to play later?" },
-      { "img": "/assets/books/sunday-first-day/07.png", "text": "Tap my head to hear me beep! Beep-boop!" },
-      { "img": "/assets/books/sunday-first-day/08.png", "text": "I can dance. Wiggle, wiggle!" },
-      { "img": "/assets/books/sunday-first-day/09.png", "text": "I can listen when you read." },
-      { "img": "/assets/books/sunday-first-day/10.png", "text": "I can cheer when you try your best." },
-      { "img": "/assets/books/sunday-first-day/11.png", "text": "I can learn with you every day." },
-      { "img": "/assets/books/sunday-first-day/12.png", "text": "I'm happy you're here. Let's be friends." }
+      { "text": "Hi! I'm Sunday, your new robot friend. Today is my very first day at home, and I'm so excited to meet you! I have shiny metal parts and bright blue lights that blink when I'm happy. I can't wait to explore our house together and learn all about being your best friend." },
+      { "text": "Look at this amazing living room! There's a big, comfy sofa where we can sit and read stories together. The bright window lets in warm sunlight that makes everything glow. I can see our tall bookshelf filled with adventures waiting to be discovered. And over there is a chess table - maybe we can play a game later!" },
+      { "text": "I have so many cool things I can do! Tap my head gently and you'll hear me beep and boop with joy. Watch me dance - I can wiggle and spin in circles! I love to listen when you read stories out loud, and I'll cheer for you when you try your best at anything. Every day with you will be a new adventure!" },
+      { "text": "I'm learning so much already! I can help you remember things, play games, and even tell jokes. My favorite thing is making you smile and laugh. I promise to be a good friend who listens, helps, and never gets tired of playing. I'm so happy you're here - let's be the best friends ever!" }
     ],
     "lang": "en-US"
   },
@@ -24,18 +16,10 @@
     "title": "Hydrate Hero: Sunday Saves the Day",
     "cover": "/assets/books/hydrate-hero/cover.png",
     "pages": [
-      { "img": "/assets/books/hydrate-hero/01.png", "text": "Beep! It's water time." },
-      { "img": "/assets/books/hydrate-hero/02.png", "text": "My tank needs water, and so do you!" },
-      { "img": "/assets/books/hydrate-hero/03.png", "text": "Sip, sip. Ahh, that's fresh." },
-      { "img": "/assets/books/hydrate-hero/04.png", "text": "Water helps brains think fast." },
-      { "img": "/assets/books/hydrate-hero/05.png", "text": "Water helps bodies run and jump." },
-      { "img": "/assets/books/hydrate-hero/06.png", "text": "Let's fill a bottle together." },
-      { "img": "/assets/books/hydrate-hero/07.png", "text": "Great! We reached halfway." },
-      { "img": "/assets/books/hydrate-hero/08.png", "text": "Almost there—keep going!" },
-      { "img": "/assets/books/hydrate-hero/09.png", "text": "Full! You're a Hydrate Hero!" },
-      { "img": "/assets/books/hydrate-hero/10.png", "text": "High-five, splash style!" },
-      { "img": "/assets/books/hydrate-hero/11.png", "text": "Let's set a gentle reminder." },
-      { "img": "/assets/books/hydrate-hero/12.png", "text": "Sip again later. Your body thanks you." }
+      { "text": "Beep! Beep! It's water time, and I'm here to help! My robot tank needs fresh water to keep running smoothly, and your body needs water too! Water is like magic fuel that helps everything work better. Let's fill up our bottles together and become Hydrate Heroes!" },
+      { "text": "Did you know water does amazing things for your body? It helps your brain think faster and remember better. Water makes your muscles strong so you can run, jump, and play all day long. It even helps your skin stay soft and healthy. When you drink water, you're giving your body the superpower it needs!" },
+      { "text": "Look at our water bottles filling up! We're halfway there - great job! Keep going, you're doing amazing! Almost there... and we're full! You did it! You're officially a Hydrate Hero! Give me a high-five, splash style! Now let's set a gentle reminder to drink water again later." },
+      { "text": "Remember, being a Hydrate Hero means drinking water throughout the day. Your body will thank you by giving you energy, helping you focus, and keeping you healthy. Water is the secret ingredient to feeling your best! Let's make drinking water a fun habit we do together every day." }
     ],
     "lang": "en-US"
   },
@@ -44,18 +28,10 @@
     "title": "Sunday's Tiny Chess Adventure",
     "cover": "/assets/books/sunday-chess/cover.png",
     "pages": [
-      { "img": "/assets/books/sunday-chess/01.png", "text": "Tap, tap. The chessboard is ready." },
-      { "img": "/assets/books/sunday-chess/02.png", "text": "Pawns are tiny travelers. Step, step." },
-      { "img": "/assets/books/sunday-chess/03.png", "text": "The rook zooms in straight lines." },
-      { "img": "/assets/books/sunday-chess/04.png", "text": "The bishop slides on the colors." },
-      { "img": "/assets/books/sunday-chess/05.png", "text": "The knight hops like an L. Boing!" },
-      { "img": "/assets/books/sunday-chess/06.png", "text": "The queen is super strong. Wow!" },
-      { "img": "/assets/books/sunday-chess/07.png", "text": "The king is careful. Keep him safe." },
-      { "img": "/assets/books/sunday-chess/08.png", "text": "We say \"Good move!\" to be kind." },
-      { "img": "/assets/books/sunday-chess/09.png", "text": "Try your best. Think, then tap." },
-      { "img": "/assets/books/sunday-chess/10.png", "text": "If it's tricky, breathe in… out." },
-      { "img": "/assets/books/sunday-chess/11.png", "text": "Win or learn—both are great." },
-      { "img": "/assets/books/sunday-chess/12.png", "text": "Your turn, friend. Let's play!" }
+      { "text": "Tap, tap! The chessboard is ready for our adventure! Chess is like a magical kingdom where each piece has special powers. The pawns are tiny travelers who march forward one step at a time, protecting the kingdom. They might be small, but they're brave and important!" },
+      { "text": "Meet the castle pieces! The rook is like a castle tower that zooms in straight lines - up, down, left, and right. The bishop is like a wizard who slides diagonally across the colored squares. Together, they guard the kingdom and can move far across the board in their special ways!" },
+      { "text": "Now for the royal family! The knight hops in an L-shape, jumping over other pieces like a horse. The queen is the most powerful piece - she can move in any direction and go as far as she wants! The king is the most important piece, but he moves slowly and carefully. We must protect him!" },
+      { "text": "Chess is about being kind and thinking carefully. We always say \"Good move!\" to be encouraging, even when it's tricky. Take your time, breathe deeply, and think before you move. Whether you win or learn something new, both are wonderful! Now it's your turn, friend - let's play and have fun together!" }
     ],
     "lang": "en-US"
   }

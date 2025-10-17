@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sunday-first-day",
+    "title": "Sunday's First Day",
+    "cover": "/assets/books/sunday-first-day/cover.png",
+    "readingLevel": "Level 1"
+  },
+  {
+    "id": "hydrate-hero",
+    "title": "Hydrate Hero: Sunday Saves the Day",
+    "cover": "/assets/books/hydrate-hero/cover.png",
+    "readingLevel": "Level 2"
+  },
+  {
+    "id": "sunday-chess",
+    "title": "Sunday's Tiny Chess Adventure",
+    "cover": "/assets/books/sunday-chess/cover.png",
+    "readingLevel": "Level 3"
+  },
+  {
+    "id": "sunday-homework-machine",
+    "title": "Sunday and the Homework Machine",
+    "cover": "/assets/books/sunday-homework-machine/cover.png",
+    "readingLevel": "Level 4"
+  }
+]
