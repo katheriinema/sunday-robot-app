@@ -1,20 +1,22 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import GlobalNavigation from '@/components/GlobalNavigation';
 
 // Game constants (landscape like the Python version)
 const SCREEN_WIDTH = 960;
 const SCREEN_HEIGHT = 540;
 const SPEED = 2;
-const GRAVITY = 0.25; // Reverted to easier control
-const JUMP_FORCE = -5; // Reverted to stronger jumps
-const GAME_SPEED = 2;
+const GRAVITY = 0.1; // Much slower fall - easier to control
+const JUMP_FORCE = -4.5; // Softer jump for smoother control
+const GAME_SPEED = 1.0; // Much slower initial game speed - pillars move slower
+const MAX_FALL_SPEED = 5; // Lower cap for even smoother control
 const GROUND_WIDTH = 2 * SCREEN_WIDTH;
 const GROUND_HEIGHT = 50;
 const PIPE_WIDTH = 80;
 const PIPE_HEIGHT = 500;
 const PIPE_GAP = 20; // Small vertical gap for challenge
-const PIPE_SPACING = 150; // Reasonable horizontal spacing
+const PIPE_SPACING = 250; // Much larger spacing - pillars spawn slower
 
 interface Bird {
   x: number;
@@ -53,7 +55,7 @@ export default function FlappySunday() {
   const birdRef = useRef<Bird>({
     x: 150, // Like the Python version
     y: SCREEN_HEIGHT / 2,
-    speed: SPEED,
+    speed: 0, // Start with no speed - gentler start
     width: 80, // Increased from 60
     height: 80, // Increased from 60
     rotation: 0 // Start with no rotation
@@ -140,13 +142,17 @@ export default function FlappySunday() {
     }
   }, []);
 
-  // Bird jump function
+  // Bird jump function with smoother initial state
   const birdBump = () => {
     if (!gameStarted) {
       setGameStarted(true);
+      // Start with a gentler initial speed
+      birdRef.current.speed = JUMP_FORCE * 0.8;
+      birdRef.current.rotation = -20;
+    } else {
+      birdRef.current.speed = JUMP_FORCE; // Softer jump force
+      birdRef.current.rotation = -20; // Less extreme tilt for smoother feel
     }
-    birdRef.current.speed = JUMP_FORCE; // Use the reverted jump force
-    birdRef.current.rotation = -25; // Tilt up when jumping
   };
 
   // Check if sprite is off screen
@@ -249,22 +255,26 @@ export default function FlappySunday() {
         return;
       }
 
-      // Update bird
+      // Update bird with smoothing and capped fall speed
       birdRef.current.speed += GRAVITY;
+      // Cap maximum falling speed for smoother, more controllable gameplay
+      if (birdRef.current.speed > MAX_FALL_SPEED) {
+        birdRef.current.speed = MAX_FALL_SPEED;
+      }
       birdRef.current.y += birdRef.current.speed;
 
-      // Update rotation based on speed
+      // Update rotation based on speed with smoother transitions
       if (birdRef.current.speed > 0) {
-        // Falling - tilt forward (clockwise)
-        birdRef.current.rotation = Math.min(birdRef.current.rotation + 2, 45);
+        // Falling - tilt forward (clockwise) - slower rotation for smoother feel
+        birdRef.current.rotation = Math.min(birdRef.current.rotation + 1.5, 35); // Reduced from 45 to 35 and slower rotation
       } else {
-        // Rising - tilt up (counter-clockwise)
-        birdRef.current.rotation = Math.max(birdRef.current.rotation - 1, -25);
+        // Rising - tilt up (counter-clockwise) - smoother upward tilt
+        birdRef.current.rotation = Math.max(birdRef.current.rotation - 2, -20); // Reduced from -25 to -20
       }
 
-      // Calculate progressive speed based on score
-      const currentSpeed = GAME_SPEED + (score * 0.1); // Speed increases by 0.1 per point
-      const maxSpeed = GAME_SPEED * 3; // Cap at 3x original speed
+      // Calculate progressive speed based on score - slower progression
+      const currentSpeed = GAME_SPEED + (score * 0.05); // Speed increases by 0.05 per point (slower)
+      const maxSpeed = GAME_SPEED * 2.5; // Lower cap for more manageable speed
       const finalSpeed = Math.min(currentSpeed, maxSpeed);
 
       // Update grounds
@@ -447,15 +457,7 @@ export default function FlappySunday() {
 
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
-      {/* Back Button */}
-      <div className="absolute top-4 left-4 z-10">
-        <button
-          onClick={() => router.push('/arcade')}
-          className="bg-white bg-opacity-20 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-opacity-30 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-        >
-          ← Back to Arcade
-        </button>
-      </div>
+      <GlobalNavigation />
       
       {/* Game Canvas - Full Screen */}
       <canvas

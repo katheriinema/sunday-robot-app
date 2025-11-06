@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Supabase Setup (Auth + Data)
+
+1) Install SDK
+
+```bash
+npm i @supabase/supabase-js
+```
+
+2) Create env vars in `.env.local`
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+```
+
+3) Client
+
+We expose a shared client at `lib/supabaseClient.ts`:
+
+```ts
+import { supabase } from "@/lib/supabaseClient";
+```
+
+4) Next steps
+- Create tables in Supabase: parents, children, tasks, diary_entries
+- Enable RLS and add policies per parent (auth.uid())
+- Wire Parent Dashboard tasks and Diary to Supabase CRUD

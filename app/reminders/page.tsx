@@ -204,16 +204,7 @@ export default function Reminders() {
       <div className="fixed bottom-32 left-20 text-3xl animate-bounce" style={{animationDelay: '2s'}}>😴</div>
       <div className="fixed bottom-20 right-10 text-4xl animate-bounce" style={{animationDelay: '0.5s'}}>🏃‍♂️</div>
 
-      {/* Back Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <a 
-          href="/living-room" 
-          className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 text-lg"
-        >
-          <span className="text-2xl animate-pulse">🏠</span>
-          <span>Back to Room</span>
-        </a>
-      </div>
+      <GlobalNavigation />
     </div>
   );
 }

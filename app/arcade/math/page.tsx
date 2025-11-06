@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import GlobalNavigation from "@/components/GlobalNavigation";
 
 export default function SundayLogic() {
   const [battery, setBattery] = useState(50);
@@ -236,6 +237,7 @@ export default function SundayLogic() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 flex items-center justify-center p-4">
+      <GlobalNavigation />
       <div className="max-w-2xl w-full">
         {/* Header */}
         <div className="text-center mb-8">
@@ -390,15 +392,6 @@ export default function SundayLogic() {
             </div>
           )}
 
-          {/* Back Button */}
-          <div className="text-center mt-8">
-            <a 
-              href="/living-room" 
-              className="inline-flex items-center gap-2 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-            >
-              ← Back to Room
-            </a>
-          </div>
         </div>
       </div>
 

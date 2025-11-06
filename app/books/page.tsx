@@ -3,6 +3,7 @@ import localBooks from "@/data/books.json";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import GlobalNavigation from "@/components/GlobalNavigation";
 
 export default function Bookshelf() {
   const [sundayScrollPosition, setSundayScrollPosition] = useState(0);
@@ -44,6 +45,7 @@ export default function Bookshelf() {
 
   return (
     <div className="relative min-h-screen">
+      <GlobalNavigation />
       {/* Bookshelf Background */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -121,10 +123,10 @@ export default function Bookshelf() {
               </div>
             </div>
 
-            {/* External Books Shelf */}
+            {/* Sunday Diary */}
             <div className="shelf-section">
               <h2 className="text-xl font-medium text-white mb-2 drop-shadow-lg text-left mt-2 ml-16">
-                External Books
+                Sunday Diary
               </h2>
               <div className="shelf relative p-6 pt-0 mt-8">
                 <button 
@@ -138,17 +140,22 @@ export default function Bookshelf() {
                   className="books-container flex gap-6 overflow-x-auto scrollbar-hide px-12 py-4"
                   style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
-                  {externalBooks.length > 0 ? (
-                    externalBooks.map((book, index) => (
-                      <div key={index} className="book-card group flex-shrink-0 transform hover:scale-105 transition-all duration-300 animate-fadeIn">
-                        {/* External book content would go here */}
+                  <Link 
+                    href="/books/diary" 
+                    className="group flex-shrink-0 transform hover:scale-105 transition-all duration-300 animate-fadeIn"
+                  >
+                    <div className="relative">
+                      <div className="w-32 h-52 bg-white rounded shadow-lg border-2 border-white overflow-hidden relative">
+                        {/* Shadow behind book */}
+                        <div className="absolute -bottom-1 -right-1 w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 rounded transform rotate-1"></div>
+                        <img 
+                          src="/assets/file.svg"
+                          alt="Journal placeholder cover"
+                          className="w-full h-full object-contain relative z-10 bg-gray-50"
+                        />
                       </div>
-                    ))
-                  ) : (
-                    <div className="flex items-center justify-center w-full py-8">
-                      <p className="text-amber-700 text-lg font-medium">More books coming soon!</p>
                     </div>
-                  )}
+                  </Link>
                 </div>
                 <button 
                   onClick={() => scrollShelf('right', 'external')}
@@ -162,16 +169,6 @@ export default function Bookshelf() {
           </section>
         </div>
         
-        {/* Cute Back Button */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <a 
-            href="/living-room" 
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
-          >
-            <span className="text-xl">🏠</span>
-            Back to Room
-          </a>
-        </div>
       </div>
     </div>
   );

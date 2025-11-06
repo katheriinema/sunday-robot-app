@@ -1,171 +1,133 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Onboarding() {
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [name, setName] = useState("");
-  const [showInput, setShowInput] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
   const [displayText, setDisplayText] = useState("");
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+
+  // Profile fields
+  const [childName, setChildName] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [parentEmail, setParentEmail] = useState("");
+  const age = useMemo(() => {
+    if (!birthday) return null as number | null;
+    const b = new Date(birthday);
+    const now = new Date();
+    let years = now.getFullYear() - b.getFullYear();
+    const m = now.getMonth() - b.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < b.getDate())) years--;
+    return years;
+  }, [birthday]);
 
   const dialogues = [
-    "Hey there! It's me — Sunday!",
-    "I'm so happy you downloaded my app! We can play and learn together here too.",
-    "Before we start, what should I call you?"
+    "Hi there! I’m Sunday.",
+    "I’m so happy you’re here! This is our cozy room where we can learn and relax.",
+    "Before we start, let’s set up your profile."
   ];
 
-  const finalGreeting = `Nice to see you again, ${name}! Let's have some fun! Click on the bookshelf, chess table, or plant to discover things we can do together!`;
-
-  // Typewriter effect
+  // Typewriter for current step
   useEffect(() => {
-    if (step < dialogues.length) {
-      setIsTyping(true);
-      const currentDialogue = dialogues[step];
-      let index = 0;
-      
-      const typeInterval = setInterval(() => {
-        if (index <= currentDialogue.length) {
-          setDisplayText(currentDialogue.slice(0, index));
-          index++;
-        } else {
-          setIsTyping(false);
-          clearInterval(typeInterval);
-          
-          // Show input field after third dialogue
-          if (step === 2) {
-            setTimeout(() => setShowInput(true), 500);
-          }
+    const text = dialogues[step] || "";
+    setIsTyping(true);
+    let i = 0;
+    const id = setInterval(() => {
+      if (i <= text.length) {
+        setDisplayText(text.slice(0, i));
+        i++;
+      } else {
+        setIsTyping(false);
+        clearInterval(id);
+        if (step === dialogues.length - 1) {
+          // open profile modal after final line
+          setTimeout(() => setShowProfileModal(true), 500);
         }
-      }, 50);
-
-      return () => clearInterval(typeInterval);
-    }
+      }
+    }, 35);
+    return () => clearInterval(id);
   }, [step]);
 
-  // Handle final greeting
-  useEffect(() => {
-    if (isCompleted) {
-      const timer = setTimeout(() => {
-        // Store name and completion status in localStorage
-        localStorage.setItem("sundayUserName", name);
-        localStorage.setItem("sundayOnboardingCompleted", "true");
-        // Redirect to home
-        router.push("/living-room");
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [isCompleted, name, router]);
-
-  const handleNext = () => {
-    if (step < dialogues.length - 1) {
-      setStep(step + 1);
-    }
+  const nextLine = () => {
+    if (step < dialogues.length - 1) setStep(step + 1);
   };
 
-  const handleNameSubmit = () => {
-    if (name.trim()) {
-      setIsCompleted(true);
-      setShowInput(false);
+  const handleProfileContinue = () => {
+    if (!childName || !birthday) return;
+    if (age !== null && age < 18 && !parentEmail) return; // require parent email
+    localStorage.setItem("pending_child", JSON.stringify({ name: childName, birthday }));
+    localStorage.setItem("sundayUserName", childName);
+    if (age !== null && age < 18 && parentEmail) {
+      localStorage.setItem("parent_prefill_email", parentEmail);
+      router.push("/onboarding/parent");
+      return;
     }
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      handleNameSubmit();
-    }
+    // If 18 or older, skip parent and proceed to room
+    router.push("/living-room");
   };
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Full-screen background */}
+      {/* Background */}
       <Image 
         src="/assets/bg/living-room.png" 
-        alt="Sunday's cozy living room" 
+        alt="Sunday's living room" 
         fill 
         className="object-cover" 
         priority 
         unoptimized
       />
-      
-      {/* Sunday Robot */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className={`sunday-avatar ${isCompleted ? 'sunday-happy' : 'sunday-idle'}`}>
-          <Image 
-            src={isCompleted ? "/assets/sunday_happy.png" : "/assets/sunday_idle.png"}
-            alt="Sunday Robot"
-            width={200}
-            height={200}
-            className="drop-shadow-lg"
-            unoptimized
-          />
-        </div>
-      </div>
 
-      {/* Chat Bubble */}
-      <div className="absolute bottom-48 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="chat-bubble bg-white rounded-3xl px-6 py-4 shadow-xl max-w-sm mx-4">
+      {/* Chat bubble */}
+      <div className="absolute bottom-48 left-1/2 -translate-x-1/2 z-20">
+        <div className="bg-white rounded-3xl px-6 py-4 shadow-xl max-w-sm mx-4">
           <div className="relative">
-            {/* Chat bubble tail */}
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white"></div>
-            
-            {/* Text content */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white"></div>
             <div className="text-gray-800 text-lg font-medium min-h-[2rem]">
-              {isCompleted ? (
-                <div className="text-center">
-                  <div className="animate-fadeIn">{finalGreeting}</div>
-                </div>
-              ) : (
-                <div className="animate-fadeIn">
-                  {displayText}
-                  {isTyping && <span className="animate-pulse">|</span>}
-                </div>
-              )}
+              <div className="animate-fadeIn">{displayText}{isTyping && <span className="animate-pulse">|</span>}</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Name Input Field */}
-      {showInput && !isCompleted && (
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-30 animate-fadeIn">
-          <div className="bg-white rounded-2xl px-6 py-4 shadow-xl">
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Enter your name..."
-              className="text-lg font-medium text-gray-800 placeholder-gray-400 border-none outline-none bg-transparent w-64 text-center"
-              autoFocus
-            />
-            <div className="flex justify-center mt-3">
-              <button
-                onClick={handleNameSubmit}
-                disabled={!name.trim()}
-                className="btn bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-6 py-2 rounded-xl font-medium transition-colors"
-              >
-                Continue
-              </button>
-            </div>
-          </div>
+      {/* Next button until final line */}
+      {step < dialogues.length - 1 && !isTyping && (
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30">
+          <button onClick={nextLine} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">Next</button>
         </div>
       )}
 
-      {/* Next Button (for dialogue steps) */}
-      {step < dialogues.length - 1 && !showInput && !isTyping && (
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-30">
-          <button
-            onClick={handleNext}
-            className="btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-medium shadow-lg animate-fadeIn"
-          >
-            Next
-          </button>
+      {/* Profile modal */}
+      {showProfileModal && (
+        <div className="absolute inset-0 z-40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
+          <div className="relative bg-white rounded-xl shadow-2xl border border-emerald-200 w-full max-w-md p-6">
+            <h2 className="text-2xl font-bold text-emerald-900 mb-1">Welcome! Let’s set up your profile</h2>
+            <p className="text-slate-600 mb-4">We’ll keep this info safe.</p>
+            <div className="space-y-3">
+              <div>
+                <label className="block text-sm text-emerald-900 mb-1">What should I call you?</label>
+                <input value={childName} onChange={(e) => setChildName(e.target.value)} className="w-full border border-emerald-300 rounded-lg px-3 py-2" />
+              </div>
+              <div>
+                <label className="block text-sm text-emerald-900 mb-1">Birthday</label>
+                <input type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} className="w-full border border-emerald-300 rounded-lg px-3 py-2" />
+              </div>
+              {age !== null && age < 18 && (
+                <div>
+                  <label className="block text-sm text-emerald-900 mb-1">Parent email (required)</label>
+                  <input type="email" value={parentEmail} onChange={(e) => setParentEmail(e.target.value)} className="w-full border border-emerald-300 rounded-lg px-3 py-2" />
+                </div>
+              )}
+            </div>
+            <button onClick={handleProfileContinue} className="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">Continue</button>
+          </div>
         </div>
       )}
     </div>
   );
 }
+ 
