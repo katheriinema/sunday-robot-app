@@ -212,6 +212,10 @@ export default function ParentDashboard({ onBack }) {
     setNewTaskDetails(task.details || "");
     setNewTaskRecurrent(task.recurrent || false);
     setAdding(false);
+    // Set selected date to task's date if it's not recurrent
+    if (!task.recurrent && task.date && task.date !== '1970-01-01') {
+      setSelectedDate(task.date);
+    }
   };
 
   const cancelEdit = () => {
@@ -315,7 +319,7 @@ export default function ParentDashboard({ onBack }) {
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-lg font-semibold text-emerald-900">Tasks / Reminders</h3>
             <button onClick={() => { setShowWeekView(!showWeekView); setShowDailyView(false); }} className="text-sm bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">
-              Weekly View
+              {showWeekView ? 'Monthly View' : 'Weekly View'}
             </button>
           </div>
           
@@ -392,9 +396,29 @@ export default function ParentDashboard({ onBack }) {
                         </div>
                         <div className="p-2 min-h-[200px] max-h-[400px] overflow-y-auto space-y-1.5">
                           {dayTasks.map((t) => (
-                            <div key={t.id} className="bg-emerald-100 border border-emerald-300 rounded p-1.5 text-xs cursor-pointer hover:bg-emerald-200">
-                              <div className="font-semibold text-emerald-900 truncate">{t.title} {t.recurrent && <span className="text-[10px]">(Every day)</span>}</div>
-                              <div className="text-emerald-700 text-[10px]">{formatTime12h(t.time)}</div>
+                            <div 
+                              key={t.id} 
+                              onClick={() => startEdit(t)}
+                              className="bg-emerald-100 border border-emerald-300 rounded p-1.5 text-xs cursor-pointer hover:bg-emerald-200 transition-colors relative group"
+                            >
+                              <div className="flex items-start justify-between gap-1">
+                                <div className="flex-1 min-w-0">
+                                  <div className="font-semibold text-emerald-900 truncate">{t.title} {t.recurrent && <span className="text-[10px]">(Every day)</span>}</div>
+                                  <div className="text-emerald-700 text-[10px]">{formatTime12h(t.time)}</div>
+                                </div>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (confirm(`Delete "${t.title}"?`)) {
+                                      removeTask(t.id);
+                                    }
+                                  }}
+                                  className="opacity-0 group-hover:opacity-100 transition-opacity text-red-600 hover:text-red-800 hover:bg-red-100 rounded px-1 py-0.5 text-[10px] font-bold"
+                                  title="Delete task"
+                                >
+                                  ×
+                                </button>
+                              </div>
                             </div>
                           ))}
                           {dayTasks.length === 0 && (
@@ -407,9 +431,6 @@ export default function ParentDashboard({ onBack }) {
                 </div>
               </div>
               <div className="mb-3 text-center flex gap-2 justify-center">
-                <button onClick={() => { setShowWeekView(false); setShowDailyView(false); }} className="text-sm bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">
-                  Show Month View
-                </button>
                 <button onClick={() => { setShowDailyView(true); setShowWeekView(false); setSelectedDate(today.toISOString().slice(0, 10)); setCurrentYear(today.getFullYear()); setCurrentMonth(today.getMonth()); }} className="text-sm bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">
                   Daily View
                 </button>
@@ -476,12 +497,12 @@ export default function ParentDashboard({ onBack }) {
           )}
 
           {/* Add Task (only in month view, not in week view) */}
-          {!showWeekView && (
+          {!showWeekView && !editingId && (
             <div className="mb-3">
-              {!adding && !editingId && (
+              {!adding && (
                 <button onClick={() => setAdding(true)} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">Add Task</button>
               )}
-              {(adding || editingId) && (
+              {adding && (
                 <div className="flex flex-col gap-3 items-stretch">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <input value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} placeholder="Task name" className="flex-1 border border-emerald-300 rounded-lg px-3 py-2" />
@@ -496,12 +517,38 @@ export default function ParentDashboard({ onBack }) {
                       <input type="checkbox" checked={newTaskRecurrent} onChange={(e) => setNewTaskRecurrent(e.target.checked)} /> Recurrent (every day)
                     </label>
                     <div className="flex gap-2">
-                      <button onClick={editingId ? saveEdit : addTask} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">{editingId ? 'Save' : 'Confirm'}</button>
-                      <button onClick={editingId ? cancelEdit : () => setAdding(false)} className="border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold px-4 py-2 rounded-lg">Cancel</button>
+                      <button onClick={addTask} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">Confirm</button>
+                      <button onClick={() => setAdding(false)} className="border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold px-4 py-2 rounded-lg">Cancel</button>
                     </div>
                   </div>
                 </div>
               )}
+            </div>
+          )}
+
+          {/* Edit Task Form (shown in all views when editing) */}
+          {editingId && (
+            <div className="mb-3 bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+              <h4 className="text-lg font-semibold text-emerald-900 mb-3">Edit Task</h4>
+              <div className="flex flex-col gap-3 items-stretch">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} placeholder="Task name" className="flex-1 border border-emerald-300 rounded-lg px-3 py-2" />
+                  <input value={newTaskTime} onChange={(e) => setNewTaskTime(e.target.value)} type="time" className="w-36 border border-emerald-300 rounded-lg px-3 py-2" />
+                </div>
+                <textarea value={newTaskDetails} onChange={(e) => setNewTaskDetails(e.target.value)} placeholder="Details (what does this task entail?)" rows={3} className="w-full border border-emerald-300 rounded-lg px-3 py-2" />
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <label className="flex items-center gap-2 border border-emerald-300 rounded-lg px-3 py-2 bg-white">
+                    <input type="checkbox" checked={newTaskRemind} onChange={(e) => setNewTaskRemind(e.target.checked)} /> Remind {childName || "kid"}
+                  </label>
+                  <label className="flex items-center gap-2 border border-emerald-300 rounded-lg px-3 py-2 bg-white">
+                    <input type="checkbox" checked={newTaskRecurrent} onChange={(e) => setNewTaskRecurrent(e.target.checked)} /> Recurrent (every day)
+                  </label>
+                  <div className="flex gap-2">
+                    <button onClick={saveEdit} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">Save</button>
+                    <button onClick={cancelEdit} className="border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold px-4 py-2 rounded-lg">Cancel</button>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
